@@ -31,6 +31,40 @@ document.addEventListener('click', function(e) {
     }
 }, true);
 </script>
+
+<script>
+// Force fix for React Hydration overriding text and styles
+setInterval(function() {
+    const descs = {
+        'Hygiene': 'Premium hygiene solutions and housekeeping supplies<br/>designed to keep your workspace pristine and safe.',
+        'One Time Setup': 'High-end corporate electronics, office automation,<br/>and long-term capex solutions for your business.',
+        'Stationery': 'Top-quality stationery, pens, organizers, and<br/>essential office supplies for everyday productivity.',
+        'MRO': 'Industrial-grade tools, machinery parts, and MRO<br/>supplies to ensure seamless operational continuity.',
+        'Gifting': 'Luxurious, thoughtful corporate gifting options<br/>and premium rewards to appreciate your clients.',
+        'Packaging': 'Durable and cost-effective packaging materials<br/>including corrugated boxes, tapes, and bubble wrap.'
+    };
+    
+    document.querySelectorAll('h1').forEach(h1 => {
+        for (const [key, desc] of Object.entries(descs)) {
+            if (h1.innerText.includes(key)) {
+                let p = h1.parentElement.nextElementSibling ? h1.parentElement.nextElementSibling.querySelector('p.text-sm') : null;
+                if (p && !p.innerHTML.includes(desc)) {
+                    p.innerHTML = desc;
+                }
+            }
+        }
+    });
+
+    document.querySelectorAll('img').forEach(img => {
+        if (img.src.includes('images/shop/')) {
+            img.style.setProperty('height', '16rem', 'important');
+            img.style.setProperty('object-fit', 'cover', 'important');
+            img.style.setProperty('width', '100%', 'important');
+            img.classList.remove('h-full');
+        }
+    });
+}, 300);
+</script>
 </body>
 <!-- Mirrored from www.corpgate.com/shop/categories/paper-products by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Oct 2026 20:54:42 GMT -->
 </html>
