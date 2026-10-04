@@ -28,3 +28,8 @@
     91% { background-image: url('../../../images/slider3.jpg'); }
     100% { background-image: url('../../../images/slider1.jpg'); }
 }
+
+/* Fix for slanted stripes */
+.bg-blue-300 { background-color: #FDBA74 !important; }
+.bg-blue-400 { background-color: #FB923C !important; }
+.bg-black0 { background-color: #EA580C !important; }
